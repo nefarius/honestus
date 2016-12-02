@@ -10,6 +10,8 @@ namespace honestus
     {
         static void Main(string[] args)
         {
+            var options = new Options();
+            var isValid = CommandLine.Parser.Default.ParseArgumentsStrict(args, options);
         }
     }
 }
