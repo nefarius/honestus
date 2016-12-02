@@ -14,7 +14,7 @@ namespace honestus
                 "[assembly: AssemblyFileVersion(\"{0}\")]");
 
         public static KeyValuePair<string, string> ResourceFileVersion =>
-            new KeyValuePair<string, string>(@"FILEVERSION *\d*,\d*,\d*,\d*", "FILEVERSION ");
+            new KeyValuePair<string, string>(@"FILEVERSION *\d*,\d*,\d*,\d*", "FILEVERSION {0}");
 
         public static KeyValuePair<string, string> ResourceProductVersion =>
             new KeyValuePair<string, string>(@"PRODUCTVERSION *\d*,\d*,\d*,\d*", "PRODUCTVERSION {0}");
