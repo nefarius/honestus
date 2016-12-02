@@ -1,18 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using CommandLine;
+using CommandLine.Text;
 
 namespace honestus
 {
     public class Options
     {
-        [Option("version")]
+        [Option("version", MutuallyExclusiveSet = "version",
+            HelpText = "The version information to set in the target file (e.g. \"1.2.0.0\").")]
         public Version Version { get; set; }
 
-        [Option("version-from-file")]
+        [Option("version-from-file", MutuallyExclusiveSet = "version-file",
+            HelpText = "A text file containing one line that gets parsed as the target version.")]
         public string TargetVersionFile { get; set; }
 
-        [Option("target-file")]
+        [Option("target-file",
+            HelpText = "The target file to get parsed and modified.")]
         public string TargetFile { get; set; }
 
         [Option("assembly.version")]
@@ -35,6 +40,12 @@ namespace honestus
             if (!File.Exists(TargetVersionFile)) return;
 
             Version = Version.Parse(File.ReadAllText(TargetVersionFile).Trim(' ', '\n', '\r'));
+        }
+
+        [HelpOption]
+        public string GetUsage()
+        {
+            return HelpText.AutoBuild(this);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using CommandLine;
 
@@ -11,7 +12,11 @@ namespace honestus
             var options = new Options();
             var isValid = Parser.Default.ParseArgumentsStrict(args, options);
 
-            if (!isValid) return;
+            if (!isValid)
+            {
+                Console.WriteLine(options.GetUsage());
+                return;
+            }
 
             options.UseVersionFromFile();
 
