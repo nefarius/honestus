@@ -7,7 +7,7 @@ namespace honestus
     public class Options
     {
         [Option("version")]
-        public Version TargetVersion { get; set; }
+        public Version Version { get; set; }
 
         [Option("version-from-file")]
         public string TargetVersionFile { get; set; }
@@ -27,15 +27,11 @@ namespace honestus
         [Option("resource.product-version")]
         public bool OverwriteResourceProductVersion { get; set; }
 
-        public string AssemblyVersionString => $"[assembly: AssemblyVersion(\"{TargetVersion}\")]";
-
-        public string AssemblyFileVersionString => $"[assembly: AssemblyFileVersion(\"{TargetVersion}\")]";
-
         public void UseVersionFromFile()
         {
             if (!File.Exists(TargetVersionFile)) return;
 
-            TargetVersion = Version.Parse(File.ReadAllText(TargetVersionFile).Trim(' ', '\n', '\r'));
+            Version = Version.Parse(File.ReadAllText(TargetVersionFile).Trim(' ', '\n', '\r'));
         }
     }
 }
