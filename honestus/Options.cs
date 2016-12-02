@@ -27,6 +27,9 @@ namespace honestus
         [Option("resource.product-version")]
         public bool OverwriteResourceProductVersion { get; set; }
 
+        [Option("vcxproj.inf-time-stamp")]
+        public bool OverwriteVcxprojInfTimeStamp { get; set; }
+
         public void UseVersionFromFile()
         {
             if (!File.Exists(TargetVersionFile)) return;

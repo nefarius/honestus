@@ -50,6 +50,13 @@ namespace honestus
                     Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.ResourceStringProductVersion.Key,
                         string.Format(Patterns.ResourceStringProductVersion.Value, options.Version), RegexOptions.Multiline));
             }
+
+            if (options.OverwriteVcxprojInfTimeStamp)
+            {
+                File.WriteAllText(options.TargetFile,
+                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.VcxprojInfTimeStamp.Key,
+                        string.Format(Patterns.VcxprojInfTimeStamp.Value, options.Version), RegexOptions.Multiline));
+            }
         }
     }
 }
