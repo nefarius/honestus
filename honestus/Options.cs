@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using CommandLine;
 using CommandLine.Text;
 
@@ -20,19 +19,24 @@ namespace honestus
             HelpText = "The target file to get parsed and modified.")]
         public string TargetFile { get; set; }
 
-        [Option("assembly.version")]
+        [Option("assembly.version",
+            HelpText = "Update 'AssemblyVersion' attribute in the specified assembly source file.")]
         public bool OverwriteAssemblyVersion { get; set; }
 
-        [Option("assembly.file-version")]
+        [Option("assembly.file-version",
+            HelpText = "Update 'AssemblyFileVersion' attribute in the specified assembly source file.")]
         public bool OverwriteAssemblyFileVersion { get; set; }
 
-        [Option("resource.file-version")]
+        [Option("resource.file-version",
+            HelpText = "Update 'FILEVERSION' and 'FileVersion' values in the specified resource file.")]
         public bool OverwriteResourceFileVersion { get; set; }
 
-        [Option("resource.product-version")]
+        [Option("resource.product-version",
+            HelpText = "Update 'PRODUCTVERSION' and 'ProductVersion' values in the specified resource file.")]
         public bool OverwriteResourceProductVersion { get; set; }
 
-        [Option("vcxproj.inf-time-stamp")]
+        [Option("vcxproj.inf-time-stamp",
+            HelpText = "Update '<TimeStamp>' value in the specified Visual Studio project file.")]
         public bool OverwriteVcxprojInfTimeStamp { get; set; }
 
         public void UseVersionFromFile()

@@ -12,7 +12,7 @@ namespace honestus
             var options = new Options();
             var isValid = Parser.Default.ParseArgumentsStrict(args, options);
 
-            if (!isValid)
+            if (!isValid || args.Length <= 1)
             {
                 Console.WriteLine(options.GetUsage());
                 return;
