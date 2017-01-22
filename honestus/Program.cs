@@ -1,6 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Text.RegularExpressions;
+using System.Text;
 using CommandLine;
 
 namespace honestus
@@ -22,45 +21,38 @@ namespace honestus
 
             if (options.OverwriteAssemblyVersion)
             {
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.AssemblyVersion.Key,
-                        string.Format(Patterns.AssemblyVersion.Value, options.Version), RegexOptions.Multiline));
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.AssemblyVersion.Key,
+                    string.Format(Patterns.AssemblyVersion.Value, options.Version));
             }
 
             if (options.OverwriteAssemblyFileVersion)
             {
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.AssemblyFileVersion.Key,
-                        string.Format(Patterns.AssemblyFileVersion.Value, options.Version), RegexOptions.Multiline));
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.AssemblyFileVersion.Key,
+                    string.Format(Patterns.AssemblyFileVersion.Value, options.Version));
             }
 
             if (options.OverwriteResourceFileVersion)
             {
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.ResourceFileVersion.Key,
-                        string.Format(Patterns.ResourceFileVersion.Value, options.Version.ToString().Replace('.', ',')),
-                        RegexOptions.Multiline));
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.ResourceStringFileVersion.Key,
-                        string.Format(Patterns.ResourceStringFileVersion.Value, options.Version), RegexOptions.Multiline));
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.ResourceFileVersion.Key,
+                    string.Format(Patterns.ResourceFileVersion.Value, options.Version.ToString().Replace('.', ',')),
+                    Encoding.Default);
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.ResourceStringFileVersion.Key,
+                    string.Format(Patterns.ResourceStringFileVersion.Value, options.Version), Encoding.Default);
             }
 
             if (options.OverwriteResourceProductVersion)
             {
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.ResourceProductVersion.Key,
-                        string.Format(Patterns.ResourceProductVersion.Value, options.Version.ToString().Replace('.', ',')),
-                        RegexOptions.Multiline));
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.ResourceStringProductVersion.Key,
-                        string.Format(Patterns.ResourceStringProductVersion.Value, options.Version), RegexOptions.Multiline));
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.ResourceProductVersion.Key,
+                    string.Format(Patterns.ResourceProductVersion.Value, options.Version.ToString().Replace('.', ',')),
+                    Encoding.Default);
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.ResourceStringProductVersion.Key,
+                    string.Format(Patterns.ResourceStringProductVersion.Value, options.Version), Encoding.Default);
             }
 
             if (options.OverwriteVcxprojInfTimeStamp)
             {
-                File.WriteAllText(options.TargetFile,
-                    Regex.Replace(File.ReadAllText(options.TargetFile), Patterns.VcxprojInfTimeStamp.Key,
-                        string.Format(Patterns.VcxprojInfTimeStamp.Value, options.Version), RegexOptions.Multiline));
+                TextFileHelper.RegexReplace(options.TargetFile, Patterns.VcxprojInfTimeStamp.Key,
+                    string.Format(Patterns.VcxprojInfTimeStamp.Value, options.Version));
             }
         }
     }
