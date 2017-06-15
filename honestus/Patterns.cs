@@ -30,7 +30,7 @@ namespace honestus
         public static KeyValuePair<string, string> VcxprojInfTimeStamp
             =>
                 new KeyValuePair<string, string>(
-                    "<Inf>(\\n|\\r|\\r\\n) *<TimeStamp>\\d\\.\\d\\.\\d\\.\\d<\\/TimeStamp>(\\n|\\r|\\r\\n) *<\\/Inf>",
+                    "<Inf>(\\n|\\r|\\r\\n) *<TimeStamp>\\d*\\.\\d*\\.\\d*\\.\\d*<\\/TimeStamp>(\\n|\\r|\\r\\n) *<\\/Inf>",
                     "<Inf>\r\n      <TimeStamp>{0}</TimeStamp>\r\n    </Inf>");
     }
 }
